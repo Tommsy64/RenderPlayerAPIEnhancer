@@ -46,6 +46,7 @@ public class ModelPlayerAPIEnhancerMethodVisitor extends MethodVisitor
 		this.superCallingMethods = superCallingMethods;
 	}
 
+	@Override
 	public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf)
 	{
 		if(opcode == Opcodes.INVOKESPECIAL && owner.equals(originalSuperClassName))

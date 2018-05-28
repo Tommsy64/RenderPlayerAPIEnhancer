@@ -52,6 +52,7 @@ public class ModelPlayerAPIEnhancerClassScanner extends ClassVisitor
 
 	private final Set<String> scanned;
 
+	@Override
 	public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions)
 	{
 		MethodVisitor visitor = super.visitMethod(access, name, desc, signature, exceptions);

@@ -31,6 +31,7 @@ public class ModelPlayerAPIEnhancerConstructorVisitor extends MethodVisitor
 		this.isObfuscated = isObfuscated;
 	}
 
+	@Override
 	public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf)
 	{
 		if(name.equals("<init>") && ((isObfuscated && owner.equals("bpx")) || owner.equals("net/minecraft/client/model/ModelBiped")))

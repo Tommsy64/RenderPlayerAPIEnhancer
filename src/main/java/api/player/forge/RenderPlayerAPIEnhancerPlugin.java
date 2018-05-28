@@ -27,11 +27,11 @@ import org.apache.logging.log4j.*;
 import net.minecraftforge.fml.relauncher.*;
 import api.player.model.*;
 
-@IFMLLoadingPlugin.MCVersion("1.12.1")
+@IFMLLoadingPlugin.MCVersion("@MCVERSION@")
 @IFMLLoadingPlugin.TransformerExclusions("api.player.forge")
 public class RenderPlayerAPIEnhancerPlugin implements IFMLLoadingPlugin
 {
-	public static String Version = "1.0";
+	public static String Version = "@VERSION@";
 
 	public static boolean isObfuscated;
 	public static boolean hasRenderPlayerAPI = false;
@@ -85,21 +85,25 @@ public class RenderPlayerAPIEnhancerPlugin implements IFMLLoadingPlugin
 				"========================================");
 	}
 
+	@Override
 	public String[] getASMTransformerClass()
 	{
 		return hasRenderPlayerAPI ? new String[] { "api.player.forge.RenderPlayerAPIEnhancerTransformer" } : null;
 	}
 
+	@Override
 	public String getModContainerClass()
 	{
 		return hasRenderPlayerAPI ? "api.player.forge.RenderPlayerAPIEnhancerContainer" : null;
 	}
 
+	@Override
 	public String getSetupClass()
 	{
 		return null;
 	}
 
+	@Override
 	public void injectData(Map<String, Object> data)
 	{
 		isObfuscated = (Boolean)data.get("runtimeDeobfuscationEnabled");
@@ -111,6 +115,7 @@ public class RenderPlayerAPIEnhancerPlugin implements IFMLLoadingPlugin
 		}
 	}
 
+	@Override
 	public String getAccessTransformerClass()
 	{
 		return null;
@@ -118,7 +123,7 @@ public class RenderPlayerAPIEnhancerPlugin implements IFMLLoadingPlugin
 
 	private static void log(Level level, String... messageParts)
 	{
-		for(String messagePart :messageParts)
+		for(String messagePart : messageParts)
 			ModelPlayerAPIEnhancerClassVisitor.log(level, messagePart);
 	}
 

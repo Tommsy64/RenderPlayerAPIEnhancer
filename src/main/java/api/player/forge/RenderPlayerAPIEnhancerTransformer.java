@@ -25,6 +25,7 @@ import api.player.model.*;
 
 public class RenderPlayerAPIEnhancerTransformer implements IClassTransformer
 {
+	@Override
 	public byte[] transform(String name, String transformedName, byte[] bytes)
 	{
 		if(transformedName.startsWith("api.player.model."))

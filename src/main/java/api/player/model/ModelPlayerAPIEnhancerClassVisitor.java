@@ -65,6 +65,7 @@ public class ModelPlayerAPIEnhancerClassVisitor extends ClassVisitor
 	private String originalSuperClassName;
 	private String enhancerSuperClassName;
 
+	@Override
 	public void visit(int version, int access, String name, String signature, String superName, String[] interfaces)
 	{
 		if((isObfuscated && superName.equals("bpx")) || superName.equals("net/minecraft/client/model/ModelBiped"))
@@ -81,6 +82,7 @@ public class ModelPlayerAPIEnhancerClassVisitor extends ClassVisitor
 		super.visit(version, access, name, signature, superName, interfaces);
 	}
 
+	@Override
 	public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions)
 	{
 		if(enhancableClassName != null && !name.equals("<cinit>") && !name.equals("<clinit>"))
